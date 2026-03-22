@@ -30,6 +30,10 @@ body {
   padding: 32px 24px 72px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -283,6 +287,34 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 22px;
   align-items: start;
+}
+
+.symptom-section {
+  margin: 24px 0 8px;
+}
+
+.symptom-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.symptom-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.symptom-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #15181e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .predict-card,

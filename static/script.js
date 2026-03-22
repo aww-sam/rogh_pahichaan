@@ -6,8 +6,13 @@ const errorBox = document.querySelector('#error');
 const diseaseName = document.querySelector('#disease-name');
 const detectedList = document.querySelector('#detected-list');
 const chips = document.querySelectorAll('[data-chip]');
+const symptomBtn = document.querySelector('#symptom-btn');
+const symptomSection = document.querySelector('#symptom-section');
+const symptomList = document.querySelector('#symptom-list');
+const symptomStatus = document.querySelector('#symptom-status');
 
 const exampleText = 'high fever, pounding headache, dry cough, body ache';
+let symptomsLoaded = false;
 
 const setLoading = (state) => {
   predictBtn.disabled = state;
@@ -84,4 +89,50 @@ exampleBtn?.addEventListener('click', () => {
   textarea.value = exampleText;
   textarea.focus();
   setError('');
+});
+
+symptomBtn?.addEventListener('click', async () => {
+  symptomSection?.classList.remove('hidden');
+  if (symptomsLoaded) {
+    symptomList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  symptomBtn.disabled = true;
+  symptomStatus.textContent = 'Loading symptoms...';
+  try {
+    const res = await fetch('/symptoms');
+    const data = await res.json();
+    const items = data.symptoms || [];
+    symptomList.innerHTML = '';
+    if (!items.length) {
+      symptomStatus.textContent = 'No symptoms available.';
+    } else {
+      symptomStatus.textContent = 'Tap any symptom to add it to your description.';
+      items.forEach((sym) => {
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'symptom-pill';
+        pill.textContent = sym;
+        pill.addEventListener('click', () => {
+          const current = textarea.value.trim();
+          const exists = current
+            .toLowerCase()
+            .split(',')
+            .map((t) => t.trim())
+            .filter(Boolean)
+            .includes(sym.toLowerCase());
+          if (exists) return;
+          textarea.value = current ? `${current}, ${sym}` : sym;
+          textarea.focus();
+        });
+        symptomList.appendChild(pill);
+      });
+      symptomsLoaded = true;
+      symptomList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } catch (e) {
+    symptomStatus.textContent = 'Failed to load symptoms. Try again.';
+  } finally {
+    symptomBtn.disabled = false;
+  }
 });

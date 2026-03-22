@@ -31,6 +31,7 @@
                     <div class="cta-row">
                         <a class="btn primary" href="#predict">Start checking</a>
                         <a class="btn ghost" href="#about">How it works</a>
+                        <button class="btn ghost" id="symptom-btn" type="button">Symptoms</button>
                     </div>
                     <div class="chip-row">
                         {% for symptom in symptoms[:10] %}
@@ -42,6 +43,14 @@
                     <div class="floating-plant plant-main"></div>
                     <div class="accent squiggle"></div>
                     <div class="badge vertical">guided insight</div>
+                </div>
+            </section>
+
+            <section class="symptom-section hidden" id="symptom-section">
+                <div class="symptom-card">
+                    <p class="eyebrow">All symptoms</p>
+                    <p class="muted" id="symptom-status">Click “Symptoms” to load the full list from the model.</p>
+                    <div class="symptom-list" id="symptom-list"></div>
                 </div>
             </section>
 
