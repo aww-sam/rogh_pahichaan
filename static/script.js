@@ -7,11 +7,11 @@ const diseaseName = document.querySelector('#disease-name');
 const detectedList = document.querySelector('#detected-list');
 const chips = document.querySelectorAll('[data-chip]');
 
-const exampleText = 'febre alta, dor de cabeça, fadiga, náusea';
+const exampleText = 'high fever, pounding headache, dry cough, body ache';
 
 const setLoading = (state) => {
   predictBtn.disabled = state;
-  predictBtn.textContent = state ? 'Prevendo...' : 'Prever agora';
+  predictBtn.textContent = state ? 'Predicting...' : 'Predict now';
 };
 
 const setError = (message) => {
@@ -54,7 +54,7 @@ form?.addEventListener('submit', async (e) => {
   setError('');
   const symptoms = textarea.value.trim();
   if (!symptoms) {
-    setError('Descreva ao menos um sintoma.');
+    setError('Describe at least one symptom.');
     return;
   }
   setLoading(true);
@@ -66,15 +66,15 @@ form?.addEventListener('submit', async (e) => {
     });
     const data = await response.json();
     if (!response.ok || data.Error) {
-      setError(data.Error || 'Não foi possível prever agora.');
-      diseaseName.textContent = 'Aguardando sua descrição';
+      setError(data.Error || 'Could not predict right now.');
+      diseaseName.textContent = 'Awaiting your description';
       renderDetected([]);
       return;
     }
     diseaseName.textContent = data.predicted_disease;
     renderDetected(data.symptoms_detected);
   } catch (err) {
-    setError('Falha de conexão. Tente novamente.');
+    setError('Connection failed. Please try again.');
   } finally {
     setLoading(false);
   }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GreenLeaf Disease Prediction</title>
+    <title>रोग पहिचान | Health Insight</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
@@ -11,26 +11,26 @@
     <div class="page">
         <header class="nav">
             <div class="brand">
-                <div class="brand-mark">GL</div>
-                <span class="brand-name">GreenLeaf Diagnostics</span>
+                <div class="brand-mark">RP</div>
+                <span class="brand-name">रोग पहिचान</span>
             </div>
             <nav class="nav-links">
-                <a href="#about">Sobre</a>
-                <a href="#stories">Cuidados</a>
-                <a href="#predict">Prever</a>
-                <a href="#contact">Contato</a>
+                <a href="#about">About</a>
+                <a href="#stories">Guide</a>
+                <a href="#predict">Predict</a>
+                <a href="#contact">Contact</a>
             </nav>
         </header>
 
         <main>
             <section class="hero" id="top">
                 <div class="hero-content">
-                    <p class="eyebrow">Insights saudáveis</p>
-                    <h1>Descubra o que seus sintomas querem dizer</h1>
-                    <p class="lede">Um painel leve e botânico para prever doenças a partir dos seus relatos. Tudo em uma experiência tranquila inspirada no cuidado com plantas.</p>
+                    <p class="eyebrow">रोग पहिचान</p>
+                    <h1>Describe what you feel, get a calm health hint</h1>
+                    <p class="lede">A light, plant-inspired space to translate your symptoms into a possible condition. Clear visuals, gentle tones, fast answers.</p>
                     <div class="cta-row">
-                        <a class="btn primary" href="#predict">Começar agora</a>
-                        <a class="btn ghost" href="#about">Saiba mais</a>
+                        <a class="btn primary" href="#predict">Start checking</a>
+                        <a class="btn ghost" href="#about">How it works</a>
                     </div>
                     <div class="chip-row">
                         {% for symptom in symptoms[:10] %}
@@ -41,71 +41,70 @@
                 <div class="hero-visual">
                     <div class="floating-plant plant-main"></div>
                     <div class="accent squiggle"></div>
-                    <div class="badge vertical">previsão precisa</div>
+                    <div class="badge vertical">guided insight</div>
                 </div>
             </section>
 
             <section class="about" id="about">
                 <div class="about-text">
-                    <p class="eyebrow">Sobre</p>
-                    <h2>Um cuidado calmo e acolhedor</h2>
-                    <p>Nosso modelo analisa combinações de sintomas para sugerir possíveis doenças. Use-o como um guia inicial, não como diagnóstico final. Inspiramos a interface em catálogos botânicos para transmitir clareza e serenidade.</p>
+                    <p class="eyebrow">About</p>
+                    <h2>Designed for clarity and calm</h2>
+                    <p>Rogh Pahichan pairs your words with a trained model to suggest a likely condition. It’s a first look, not a final diagnosis, with a soothing layout inspired by botanic catalogs.</p>
                     <div class="cta-row">
-                        <a class="btn outline" href="#predict">Saiba mais</a>
+                        <a class="btn outline" href="#predict">See the flow</a>
                     </div>
                 </div>
                 <div class="about-visual">
                     <div class="floating-plant plant-secondary"></div>
-                    <div class="accent circle"></div>
                 </div>
             </section>
 
             <section class="stories" id="stories">
                 <div class="story-card">
-                    <p class="eyebrow">Sua primeira leitura</p>
-                    <h3>Pronto para começar</h3>
-                    <p>Digite sintomas como “febre, dor de cabeça, tosse” e veja instantaneamente o que o modelo identifica.</p>
-                    <a class="link" href="#predict">Conferir agora</a>
+                    <p class="eyebrow">Quick start</p>
+                    <h3>Ready in one line</h3>
+                    <p>Type symptoms like “high fever, throbbing headache, dry cough” and watch the model surface what matters.</p>
+                    <a class="link" href="#predict">Try it now</a>
                 </div>
                 <div class="story-card">
-                    <p class="eyebrow">Cuidados especiais</p>
-                    <h3>Detalhes que importam</h3>
-                    <p>Quanto mais contexto você der, melhor a previsão. Inclua duração, intensidade ou eventos recentes.</p>
-                    <a class="link" href="#predict">Adicionar detalhes</a>
+                    <p class="eyebrow">Better signals</p>
+                    <h3>Details shape the hint</h3>
+                    <p>Duration, intensity, and recent events sharpen the suggestion. Share what you can for clearer output.</p>
+                    <a class="link" href="#predict">Add context</a>
                 </div>
                 <div class="story-card">
-                    <p class="eyebrow">Faça o teste</p>
-                    <h3>Resultados em segundos</h3>
-                    <p>O retorno inclui a doença sugerida e os sintomas detectados para que você valide rapidamente.</p>
-                    <a class="link" href="#predict">Ver previsões</a>
+                    <p class="eyebrow">Instant view</p>
+                    <h3>Result with trace</h3>
+                    <p>See the suggested condition plus which symptoms were detected so you can validate quickly.</p>
+                    <a class="link" href="#predict">View results</a>
                 </div>
             </section>
 
             <section class="predict" id="predict">
                 <div class="predict-card">
-                    <p class="eyebrow">Previsão</p>
-                    <h2>Conte o que está sentindo</h2>
-                    <p class="muted">Descreva seus sintomas em uma única frase ou lista simples. Nosso modelo entenderá e retornará uma previsão.</p>
+                    <p class="eyebrow">Prediction</p>
+                    <h2>Tell us what you feel</h2>
+                    <p class="muted">Describe your symptoms in a single sentence or short list. The model will parse it and suggest a possible condition.</p>
                     <form id="predict-form" novalidate>
-                        <label for="symptoms">Sintomas</label>
-                        <textarea id="symptoms" name="symptoms" rows="4" placeholder="Ex.: febre alta, dor de cabeça, fadiga, náusea"></textarea>
+                        <label for="symptoms">Symptoms</label>
+                        <textarea id="symptoms" name="symptoms" rows="4" placeholder="e.g., high fever, headache, fatigue, nausea"></textarea>
                         <div class="form-actions">
-                            <button class="btn primary" id="predict-btn" type="submit">Prever agora</button>
-                            <button class="btn ghost" id="example-btn" type="button">Usar exemplo</button>
+                            <button class="btn primary" id="predict-btn" type="submit">Predict now</button>
+                            <button class="btn ghost" id="example-btn" type="button">Use example</button>
                         </div>
                         <p class="error" id="error"></p>
                     </form>
                     <div class="hint">
                         <span class="accent-dot"></span>
-                        Dica: clique nos chips acima para adicioná-los rapidamente.
+                        Tip: click the chips above to insert common symptoms quickly.
                     </div>
                 </div>
                 <div class="result-card" id="result-card">
-                    <p class="eyebrow">Resultado</p>
-                    <h3 id="disease-name">Aguardando sua descrição</h3>
-                    <p class="muted">Sintomas detectados</p>
+                    <p class="eyebrow">Result</p>
+                    <h3 id="disease-name">Awaiting your description</h3>
+                    <p class="muted">Detected symptoms</p>
                     <ul id="detected-list" class="detected-list">
-                        <li class="muted">Nada por enquanto.</li>
+                        <li class="muted">Nothing yet.</li>
                     </ul>
                 </div>
             </section>
@@ -114,11 +113,14 @@
         <footer class="footer" id="contact">
             <div>
                 <p class="eyebrow">Disclaimer</p>
-                <p class="muted">Use este resultado apenas como referência. Procure um profissional de saúde para diagnóstico e tratamento adequados.</p>
+                <p class="muted">This is a guidance tool only. Always consult a healthcare professional for diagnosis and treatment.</p>
             </div>
             <div class="footer-brand">
-                <div class="brand-mark">GL</div>
-                <span class="brand-name">GreenLeaf Diagnostics</span>
+                <div class="brand-mark">RP</div>
+                <span class="brand-name">रोग पहिचान</span>
+            </div>
+            <div class="footer-copy">
+                <p class="muted">© 2026 रोग पहिचान. All rights reserved.</p>
             </div>
         </footer>
     </div>
