@@ -20,6 +20,8 @@ A simple and efficient **Disease Prediction System** that analyzes user-provided
 - Scikit-learn  
 
 ---
+## API
+- https://disease-api-rf30.onrender.com/
 
 ## How It Works
 1. User inputs symptoms  
