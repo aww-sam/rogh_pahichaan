@@ -33,7 +33,6 @@ def predict():
     input_df=pd.DataFrame([symptoms])
     prediction=model.predict(input_df)
     disease_recognized=le.inverse_transform(prediction)[0]
-    doctor_name = doctors[doctors['Disease'] ==disease_recognized]
 
 
     return jsonify({
