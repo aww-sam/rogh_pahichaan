@@ -39,8 +39,7 @@ def predict():
 
     return jsonify({
         'predicted_disease':disease_recognized,
-        'symptoms_detected':detected,
-        'doctor_to_see':doctor_name
+        'symptoms_detected':detected
     })
 
 @app.route('/symptoms',methods=['GET'])
