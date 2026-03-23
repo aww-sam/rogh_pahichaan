@@ -6,6 +6,7 @@ app=Flask(__name__)
 model = joblib.load('models/disease_pred.pkl')
 le = joblib.load('models/label_encoder.pkl')
 feature_columns = joblib.load('models/feature_cols.pkl')
+doctors=pd.read_csv('doctors_diseases.csv')
 
 def parse_symptoms(text):
     text=text.lower()
@@ -33,10 +34,13 @@ def predict():
     input_df=pd.DataFrame([symptoms])
     prediction=model.predict(input_df)
     disease_recognized=le.inverse_transform(prediction)[0]
+    doctor_name = doctors[doctors['Disease'] ==disease_recognized]
+
 
     return jsonify({
         'predicted_disease':disease_recognized,
-        'symptoms_detected':detected
+        'symptoms_detected':detected,
+        'doctor_to_see':doctor_name
     })
 
 @app.route('/symptoms',methods=['GET'])
