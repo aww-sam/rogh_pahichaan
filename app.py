@@ -6,7 +6,6 @@ app=Flask(__name__)
 model = joblib.load('models/disease_pred.pkl')
 le = joblib.load('models/label_encoder.pkl')
 feature_columns = joblib.load('models/feature_cols.pkl')
-doctors=pd.read_csv('doctors_diseases.csv')
 
 def parse_symptoms(text):
     text=text.lower()
